@@ -1,11 +1,12 @@
 extends AnimatableBody2D
 
-var step_size = 10.0
 
 var _collide
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -13,22 +14,22 @@ func _ready():
 func _process(_delta):
 	pass
 
-func move(action):
+func move(action, speed):
 	#MOVEMENT###############################################
 	if (action == "left"):
-		_collide =  move_and_collide(Vector2(-step_size, 0))
+		_collide =  move_and_collide(Vector2(-speed, 0))
 		collision(_collide, "left")
 		return 200
 	if (action == "right"):
-		_collide =  move_and_collide(Vector2(step_size, 0))
+		_collide =  move_and_collide(Vector2(speed, 0))
 		collision(_collide, "right")
 		return 200
 	if (action == "up"):
-		_collide =  move_and_collide(Vector2(0, -step_size))
+		_collide =  move_and_collide(Vector2(0, -speed))
 		collision(_collide, "up")
 		return 200
 	if (action == "down"):
-		_collide =  move_and_collide(Vector2(0, step_size))
+		_collide =  move_and_collide(Vector2(0, speed))
 		collision(_collide, "down")
 		return 200
 

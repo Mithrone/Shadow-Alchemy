@@ -1,12 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://xld4xyh2ffqu"]
+[gd_scene load_steps=6 format=3 uid="uid://xld4xyh2ffqu"]
 
 [ext_resource type="Shape2D" uid="uid://d3f3seixsd24v" path="res://colliders/player_collider.tres" id="1_m1k57"]
-[ext_resource type="Script" path="res://scripts/node_move.gd" id="1_pvvii"]
+[ext_resource type="Script" path="res://scripts/player_move.gd" id="1_pvvii"]
+[ext_resource type="Texture2D" uid="uid://d3phlu7cdg4tk" path="res://sprites/Cube-export.png" id="3_65fq8"]
+[ext_resource type="Shape2D" uid="uid://d3qsqjruq5gai" path="res://colliders/block_collider.tres" id="4_3xumu"]
+[ext_resource type="Script" path="res://scripts/player_control.gd" id="4_h1q4b"]
 
 [node name="main_scene" type="Node2D"]
 
 [node name="player_1" type="AnimatableBody2D" parent="."]
+position = Vector2(171, 224)
+sync_to_physics = false
 script = ExtResource("1_pvvii")
 
 [node name="player_collision" type="CollisionShape2D" parent="player_1"]
 shape = ExtResource("1_m1k57")
+
+[node name="Sprite2D" type="Sprite2D" parent="player_1"]
+texture = ExtResource("3_65fq8")
+
+[node name="player_control" type="Node2D" parent="player_1"]
+script = ExtResource("4_h1q4b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(353, 212)
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("3_65fq8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = ExtResource("4_3xumu")
